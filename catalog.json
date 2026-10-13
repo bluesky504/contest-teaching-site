@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "title": "赛事教学平台",
+  "description": "从赛事规则到接口、机制、策略、渐进式代码与复盘，帮助学生理解取舍、验证假设并独立改进。",
+  "courses": [
+    {
+      "competitionId": "aiyouth",
+      "courseId": "mages-might",
+      "editionId": "2027",
+      "competition": "AI世青赛",
+      "title": "巫师之战 / Mages Might",
+      "description": "五课渐进式 JavaScript：规则与接口、采集、扩张取舍、攻防预算、复盘；附手动快照查看器。",
+      "language": "JavaScript",
+      "sourceVersion": "2027 联盟页面 + 2026 历史接口资料；版本与 unknown 分别保留。",
+      "status": "teaching-preview",
+      "entry": "courses/aiyouth/mages-might/2027/index.html"
+    }
+  ]
+}

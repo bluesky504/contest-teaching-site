@@ -1,0 +1,33 @@
+.catalog-page { margin: 0; color: #1d352a; background: #f7f6ef; font-family: "Microsoft YaHei", system-ui, sans-serif; line-height: 1.7; }
+.catalog-page * { box-sizing: border-box; }
+.catalog-page a { color: #215c42; text-underline-offset: 4px; }
+.catalog-skip { position: absolute; left: 16px; top: -80px; padding: 10px; background: white; z-index: 100; }
+.catalog-skip:focus { top: 8px; }
+.catalog-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; max-width: 1120px; margin: auto; padding: 24px 28px; border-bottom: 1px solid #d9dfd2; }
+.catalog-header .brand { font-size: 12px; font-weight: 800; letter-spacing: 2px; }
+.catalog-header a { font-size: 13px; }
+.catalog-main { max-width: 1120px; margin: auto; padding: 0 28px; }
+.catalog-intro { max-width: 840px; padding: 60px 0 36px; }
+.catalog-eyebrow { color: #5b7362; font-size: 13px; letter-spacing: 1px; }
+.catalog-page h1 { margin: 12px 0 18px; font-size: clamp(32px, 6vw, 62px); line-height: 1.2; }
+.catalog-description { font-size: 19px; max-width: 720px; }
+.learning-path { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; }
+.learning-path li { padding: 6px 15px; background: #e8eee0; border-radius: 5px; font-size: 14px; }
+.catalog-boundary { padding: 16px 18px; border-left: 3px solid #8d9c70; font-size: 14px; background: #edf0e5; }
+.section-title { font-size: 20px; margin-bottom: 20px; }
+.course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 22px; }
+.course-card { padding: 26px; border: 1px solid #d4decf; border-radius: 12px; background: #fffefa; min-width: 0; overflow-wrap: anywhere; }
+.course-card h2 { margin: 8px 0 16px; font-size: 25px; }
+.course-meta, .course-source { color: #596e5e; font-size: 13px; }
+.course-entry { display: inline-block; margin-top: 14px; padding: 10px 16px; background: #254e39; color: #fffefa !important; border-radius: 6px; text-decoration: none; font-weight: 700; }
+.preview-label { margin-left: 12px; color: #65724f; font-size: 12px; white-space: nowrap; }
+.catalog-future { margin: 38px 0 50px; padding: 25px 0; border-top: 1px solid #d9dfd2; }
+.catalog-future h2 { font-size: 18px; }
+.catalog-future p { max-width: 780px; color: #57665a; }
+.catalog-footer { max-width: 1120px; margin: auto; padding: 18px 28px 30px; border-top: 1px solid #d9dfd2; color: #5b6b5e; font-size: 12px; }
+.platform-publication { position: relative; display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 14px 24px; border-bottom: 1px solid #cfd9c7; background: #e9efdf; color: #344b38; font: 13px/1.7 "Microsoft YaHei", system-ui, sans-serif; }
+.platform-publication a { color: #214f35; font-weight: 700; text-underline-offset: 3px; }
+.platform-publication span { max-width: 980px; }
+.public-reference-note { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; color: #62695d; }
+.public-reference-note small { display: block; width: 100%; }
+@media (max-width: 480px) { .catalog-main { padding: 0 18px; } .catalog-header, .catalog-footer { padding-inline: 18px; } .catalog-intro { padding-top: 36px; } .catalog-description { font-size: 16px; } .course-card { padding: 20px; } .platform-publication { padding: 12px 16px; } }

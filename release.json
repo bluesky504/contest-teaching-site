@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "kind": "teaching-preview",
+  "sourceCommit": "dcd96660ff0362eb8ae9e146352d00c326de8b77",
+  "releaseId": "3a4a2f16130a20060c410a198f8860d777ff633306c9ac2c7c1c3d7a5716bd07",
+  "publicationPolicy": {
+    "path": "publication-policy.json",
+    "sha256": "a3abf5226457e74baa56aaa6b4cfc5539f8104555567037b69075178e9ddb19d",
+    "fileCount": 29
+  },
+  "courses": [
+    {
+      "competitionId": "aiyouth",
+      "courseId": "mages-might",
+      "editionId": "2027",
+      "entry": "courses/aiyouth/mages-might/2027/index.html"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 8,
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "web": false
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "bytes": 1412,
+      "sha256": "6b4c3d5fac42415710e6c9b16cf3beac07f748073ab36f2e1a259fedfebfb1fa",
+      "web": false
+    },
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "web": true
+    },
+    {
+      "path": "catalog.json",
+      "bytes": 797,
+      "sha256": "5a13b2ac34cc4c1eaf8b3d08cfcc23bff21c59323f4b97d140e2d05efcf00cef",
+      "web": true
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/adapters/codecombat/observer.mjs",
+      "bytes": 8314,
+      "sha256": "5204b36d894eac3061a4b400bcf2c34d510454e1c3110f215e74e7a6441f5d79",
+      "web": true,
+      "source": {
+        "path": "adapters/codecombat/observer.mjs",
+        "sha256": "5204b36d894eac3061a4b400bcf2c34d510454e1c3110f215e74e7a6441f5d79",
+        "kind": "observer-source"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/assets/teaching.css",
+      "bytes": 18972,
+      "sha256": "9b8ad908a310e7575fc6fd00df7e7f905e1672e2befabf5373830ac169bf7b6a",
+      "web": true,
+      "source": {
+        "path": "assets/teaching.css",
+        "sha256": "9b8ad908a310e7575fc6fd00df7e7f905e1672e2befabf5373830ac169bf7b6a",
+        "kind": "teaching-asset"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/assets/teaching.js",
+      "bytes": 17153,
+      "sha256": "475bbea99136e9583e30a93f5e77bf1e68f3b8526cc07926b96d0419c460e6cb",
+      "web": true,
+      "source": {
+        "path": "assets/teaching.js",
+        "sha256": "475bbea99136e9583e30a93f5e77bf1e68f3b8526cc07926b96d0419c460e6cb",
+        "kind": "teaching-asset"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/assets/timeline-viewer.css",
+      "bytes": 2867,
+      "sha256": "6dea5ff74963c01325e8e3d86322d57ec90f64e5aa5d8f4e009224a8b791e54a",
+      "web": true,
+      "source": {
+        "path": "assets/timeline-viewer.css",
+        "sha256": "6dea5ff74963c01325e8e3d86322d57ec90f64e5aa5d8f4e009224a8b791e54a",
+        "kind": "teaching-asset"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/assets/timeline-viewer.js",
+      "bytes": 13996,
+      "sha256": "c311a6fa3f41170a87ae4e45df91c0a2f94141754456056ccf043263e2f537a6",
+      "web": true,
+      "source": {
+        "path": "assets/timeline-viewer.js",
+        "sha256": "c311a6fa3f41170a87ae4e45df91c0a2f94141754456056ccf043263e2f537a6",
+        "kind": "teaching-asset"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/build/userscript.mjs",
+      "bytes": 12376,
+      "sha256": "cd580b7f7da53bf4974e98d6e33f6a8810cdbd3bf35171eba12cc714cfececc2",
+      "web": true,
+      "source": {
+        "path": "build/userscript.mjs",
+        "sha256": "cd580b7f7da53bf4974e98d6e33f6a8810cdbd3bf35171eba12cc714cfececc2",
+        "kind": "observer-source"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/data/maps/mages-might/2026-10-08/README.md",
+      "bytes": 3539,
+      "sha256": "e5aca9cb79363ffb99341610ebd67bf535081c343d98e704e379f968f0fb7ada",
+      "web": true,
+      "source": {
+        "path": "data/maps/mages-might/2026-10-08/README.md",
+        "sha256": "e5aca9cb79363ffb99341610ebd67bf535081c343d98e704e379f968f0fb7ada",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/data/seasons/2026-aiyouth/mages-might/api.json",
+      "bytes": 272337,
+      "sha256": "516e635e6460bc767aef8e5777ad48b34ffc5c8c3ef95a67dff44aaa10269dd1",
+      "web": true,
+      "source": {
+        "path": "data/seasons/2026-aiyouth/mages-might/api.json",
+        "sha256": "516e635e6460bc767aef8e5777ad48b34ffc5c8c3ef95a67dff44aaa10269dd1",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/data/seasons/2026-aiyouth/mages-might/facts.json",
+      "bytes": 548849,
+      "sha256": "f2e6b0c680f1d0f77222c0c7c2c6971c10e758e3e692fe364e653337ac982421",
+      "web": true,
+      "source": {
+        "path": "data/seasons/2026-aiyouth/mages-might/facts.json",
+        "sha256": "f2e6b0c680f1d0f77222c0c7c2c6971c10e758e3e692fe364e653337ac982421",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/guides/basic-probe-status.md",
+      "bytes": 16832,
+      "sha256": "8f946e34a36670ebac6ea38ffb63aedbbed81f258164b62825cbc4c67f82b34a",
+      "web": true,
+      "source": {
+        "path": "docs/guides/basic-probe-status.md",
+        "sha256": "8f946e34a36670ebac6ea38ffb63aedbbed81f258164b62825cbc4c67f82b34a",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/guides/battle-intro-reading.md",
+      "bytes": 4269,
+      "sha256": "52793b5891b259924010acc7353ecd4557bcaeb808ec319c315746338a84cac9",
+      "web": true,
+      "source": {
+        "path": "docs/guides/battle-intro-reading.md",
+        "sha256": "52793b5891b259924010acc7353ecd4557bcaeb808ec319c315746338a84cac9",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/guides/competition-probing.md",
+      "bytes": 2735,
+      "sha256": "a9bd08c9b3bcef573a893c27fedd8cb8169c591a67f5cfbf5873486aef2ea85b",
+      "web": true,
+      "source": {
+        "path": "docs/guides/competition-probing.md",
+        "sha256": "a9bd08c9b3bcef573a893c27fedd8cb8169c591a67f5cfbf5873486aef2ea85b",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/guides/timeline-viewer.md",
+      "bytes": 3454,
+      "sha256": "389ade4b483a46aaa0e346d7d1fa025f3c21c9352f7e70a6001ba7c137d09a8a",
+      "web": true,
+      "source": {
+        "path": "docs/guides/timeline-viewer.md",
+        "sha256": "389ade4b483a46aaa0e346d7d1fa025f3c21c9352f7e70a6001ba7c137d09a8a",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/course-review-checklist.md",
+      "bytes": 4749,
+      "sha256": "39888d25b8a8a5b7ee1a2d6d13d2e72b600ac03957a8dc0c80607d21a4726105",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/course-review-checklist.md",
+        "sha256": "39888d25b8a8a5b7ee1a2d6d13d2e72b600ac03957a8dc0c80607d21a4726105",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/mages-might-fifth-lesson.md",
+      "bytes": 6022,
+      "sha256": "e36e7c9201346a277c8a4621a98a30dfa35af97677d16f6c8a950a54eb9dc77d",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/mages-might-fifth-lesson.md",
+        "sha256": "e36e7c9201346a277c8a4621a98a30dfa35af97677d16f6c8a950a54eb9dc77d",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/mages-might-first-lesson.md",
+      "bytes": 5130,
+      "sha256": "f92e37690901cb9bc7f956a06b879a467b4a5045f2ed9fb65bd6f10276605c42",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/mages-might-first-lesson.md",
+        "sha256": "f92e37690901cb9bc7f956a06b879a467b4a5045f2ed9fb65bd6f10276605c42",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/mages-might-fourth-lesson.md",
+      "bytes": 6165,
+      "sha256": "eb6ee622029735d9254885b08d306f1e8ca8fef6ce40995ad7aa1fc47535299a",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/mages-might-fourth-lesson.md",
+        "sha256": "eb6ee622029735d9254885b08d306f1e8ca8fef6ce40995ad7aa1fc47535299a",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/mages-might-second-lesson.md",
+      "bytes": 4813,
+      "sha256": "b5d4264bb2a27e72fb3f23c5999ffcc3284f92b280df5caebfb8f709fdcee14f",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/mages-might-second-lesson.md",
+        "sha256": "b5d4264bb2a27e72fb3f23c5999ffcc3284f92b280df5caebfb8f709fdcee14f",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/docs/teaching/mages-might-third-lesson.md",
+      "bytes": 5234,
+      "sha256": "2d7157e801506a1ddcf2021279b06eb18c573fc40262d32c9dd81aaeba0dc679",
+      "web": true,
+      "source": {
+        "path": "docs/teaching/mages-might-third-lesson.md",
+        "sha256": "2d7157e801506a1ddcf2021279b06eb18c573fc40262d32c9dd81aaeba0dc679",
+        "kind": "reference"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/examples/teaching/mages-might/02-gather-and-attack.js",
+      "bytes": 330,
+      "sha256": "7db224868e826e53bb10c89073a4251133ce56dfcaf8d1bde3d683073f7c4d41",
+      "web": true,
+      "source": {
+        "path": "examples/teaching/mages-might/02-gather-and-attack.js",
+        "sha256": "7db224868e826e53bb10c89073a4251133ce56dfcaf8d1bde3d683073f7c4d41",
+        "kind": "teaching-example"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/examples/teaching/mages-might/03-expansion-and-blocking.js",
+      "bytes": 354,
+      "sha256": "57f568c4fe65c0d03c1faee6af5d2a52b84f2f3c681a0e5fc5cf18efde17d65e",
+      "web": true,
+      "source": {
+        "path": "examples/teaching/mages-might/03-expansion-and-blocking.js",
+        "sha256": "57f568c4fe65c0d03c1faee6af5d2a52b84f2f3c681a0e5fc5cf18efde17d65e",
+        "kind": "teaching-example"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/examples/teaching/mages-might/04-offense-defense-budget.js",
+      "bytes": 928,
+      "sha256": "ebfb4e7f37fcf3c3fde8180b7cca8b79f0d7acb0886bfafa765e0e8eb47317ce",
+      "web": true,
+      "source": {
+        "path": "examples/teaching/mages-might/04-offense-defense-budget.js",
+        "sha256": "ebfb4e7f37fcf3c3fde8180b7cca8b79f0d7acb0886bfafa765e0e8eb47317ce",
+        "kind": "teaching-example"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/examples/teaching/mages-might/05-review-record.js",
+      "bytes": 1830,
+      "sha256": "31252caa82c323b9702c6a4ca6e85dcdc2facc0a0365b9825b67c706ecadbcef",
+      "web": true,
+      "source": {
+        "path": "examples/teaching/mages-might/05-review-record.js",
+        "sha256": "31252caa82c323b9702c6a4ca6e85dcdc2facc0a0365b9825b67c706ecadbcef",
+        "kind": "teaching-example"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/index.html",
+      "bytes": 16772,
+      "sha256": "ade75c297438d8feb492e06200ee0f082bbfcea2b1d40ebaa2e0d1bdcde641d4",
+      "web": true,
+      "source": {
+        "path": "index.html",
+        "sha256": "466cffb2dfe0edf25eb010e32fba9dfe431c886324c8c4e9e75123446963189b",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/lessons/02-gather-and-attack.html",
+      "bytes": 14039,
+      "sha256": "3daea1dbb2c681c7cc298831061114a86a0a9731c112427a05bafc148a5ee72b",
+      "web": true,
+      "source": {
+        "path": "lessons/02-gather-and-attack.html",
+        "sha256": "379fa8ce4a88d8638409daedc7be8516d2e5019b9baf375acdc23a884ab0f678",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/lessons/03-expansion-and-blocking.html",
+      "bytes": 13275,
+      "sha256": "9f1462a187590ec58d6f756b4c7fd49c5920a155f1fffcedae7728e5e598f6d4",
+      "web": true,
+      "source": {
+        "path": "lessons/03-expansion-and-blocking.html",
+        "sha256": "2c1c9601a059d7ad4edd45e5e0e9391e8a734dd15ee0d64c038befe26c27f42e",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/lessons/04-offense-defense-budget.html",
+      "bytes": 13049,
+      "sha256": "b313d8e306aaca562fc050eca02bc0979464a4b3190e852960a0d2005303f090",
+      "web": true,
+      "source": {
+        "path": "lessons/04-offense-defense-budget.html",
+        "sha256": "45a51c63f93f4202b53977cd997b8fc758292b300856c2dd0dd26f7a0d5f338e",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/lessons/05-review-and-knowledge.html",
+      "bytes": 13018,
+      "sha256": "5f2ca6055a31368bead14696ef439694be9100d5cbec59680ae2ad051499bc91",
+      "web": true,
+      "source": {
+        "path": "lessons/05-review-and-knowledge.html",
+        "sha256": "47e96d2e1d772908d032012928a6c8f3a06161e1ceb3b0d0d1e6f6a6578fa2cc",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "courses/aiyouth/mages-might/2027/tools/timeline-viewer.html",
+      "bytes": 5743,
+      "sha256": "49fdafd71bd9df92cac8b60336c6b6e7357fe791d2812588cbccda27da8bf694",
+      "web": true,
+      "source": {
+        "path": "tools/timeline-viewer.html",
+        "sha256": "044e24b217c19e6c389cf96f443931b7201142e4eb1454c76186cb587cf7b937",
+        "kind": "teaching-page"
+      }
+    },
+    {
+      "path": "index.html",
+      "bytes": 2677,
+      "sha256": "58c11403c9eb42accd6ad8b66e3cd245479a6603d66ab3cfa560a87856da490d",
+      "web": true
+    },
+    {
+      "path": "publication-policy.json",
+      "bytes": 10088,
+      "sha256": "a3abf5226457e74baa56aaa6b4cfc5539f8104555567037b69075178e9ddb19d",
+      "web": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 637,
+      "sha256": "4e537398ec961f0bba59053f5ca03a5b6b20547dfb89af87fc9b4a7cec9eb314",
+      "web": false
+    },
+    {
+      "path": "site.css",
+      "bytes": 3225,
+      "sha256": "d3450bdec84dd3f3d70cda282274a56ee3077ece1d1e66fd38528bde08a6f632",
+      "web": true
+    },
+    {
+      "path": "verify-release.mjs",
+      "bytes": 23452,
+      "sha256": "c3a97e2388a733d717b82466759ccbc5ae0e4e6fdd5e0bdeae1e0c641db0d5ab",
+      "web": false
+    }
+  ]
+}

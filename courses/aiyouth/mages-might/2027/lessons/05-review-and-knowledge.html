@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="../../../../../site.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="巫师之战第五课：把实验写成可审计的复盘记录，区分文档、观测、假设和未知。离线教学内容。">
+  <meta name="color-scheme" content="light">
+  <title>第五课 · 复盘与知识归纳 — 巫师之战教学实验室</title>
+  <link rel="stylesheet" href="../assets/teaching.css">
+  <script src="../assets/teaching.js" defer></script>
+</head>
+<body data-lesson="review-knowledge">
+<aside class="platform-publication" aria-label="平台目录与公开状态"><a href="../../../../../index.html">← 赛事教学平台 / 全部课程</a><span>公开教学预览 · 不代表官方实战或正式证据验收；原始日志不随站分发。原稿中的“未公开”是编写时状态。</span></aside>
+  <a class="skip-link" href="#lesson">跳到课程内容</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../index.html" aria-label="返回第一课"><span class="brand-mark" aria-hidden="true">巫</span><span>巫师之战<span class="brand-subtitle">教学实验室</span></span></a><div class="header-actions"><span class="draft-badge">本地教学草稿</span><a href="#sources">查看来源 <span aria-hidden="true">↗</span></a></div></div></header>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="学习导航"><p class="eyebrow">MAGES’ MIGHT / LEARNING LAB</p><h2 class="sidebar-title">把结果变成知识</h2><p class="sidebar-description">不急着宣布最优。<br>先让证据可复核。</p><nav class="lesson-nav" aria-label="课程与本课目录"><a href="../index.html"><span class="nav-number">01</span>规则与可用接口</a><a href="02-gather-and-attack.html"><span class="nav-number">02</span>采集与基本攻击</a><a href="03-expansion-and-blocking.html"><span class="nav-number">03</span>扩张与阻塞取舍</a><a href="04-offense-defense-budget.html"><span class="nav-number">04</span>攻防预算</a><a href="#lesson" aria-current="page"><span class="nav-number">05</span>复盘与知识归纳</a><a href="#practice">检查复盘质量</a></nav><div class="sidebar-note"><span class="status-dot" aria-hidden="true"></span>课程闭环草稿<br><span>不运行比赛 · 不公开源码</span></div></aside>
+    <main id="lesson" tabindex="-1">
+      <section class="lesson-intro" aria-labelledby="lesson-title"><div class="intro-copy"><p class="eyebrow">第五课 / 问题 → 证据 → 下一测</p><h1 id="lesson-title">复盘不是复述，<br>是下一次实验的起点。</h1><p class="intro-description">把“赢了”或“输了”拆成可检查的记录：你改了什么、看到了什么、还不知道什么。</p><div class="lesson-tags"><span>记录与归纳</span><span>控制变量</span><span>证据边界</span></div><a class="primary-link" href="#record">查看记录模板 <span aria-hidden="true">↓</span></a></div><div class="learning-card"><span class="card-kicker">一份好复盘回答</span><ol><li>这次想知道什么</li><li>证据支持到哪一步</li><li>下一次只改什么</li></ol><div class="mana-tokens"><span class="fire">问题</span><span class="water">证据</span><span class="earth">未知</span></div><p>结论可以很小，<br>但不能超过证据。</p></div></section>
+      <div class="scope-notice"><span class="notice-label">课程闭环状态</span><p>本课不新增比赛策略或机制事实，只整理前四课的实验方法。静态记录对象不连接平台、不执行对局；复盘材料不自动公开参赛源码。</p></div>
+      <section class="lesson-section" id="record" aria-labelledby="record-title"><div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">WRITE WHAT CAN BE CHECKED</p><h2 id="record-title">一份可审计的记录</h2></div></div><p class="section-description">问题、假设、唯一主要改动、控制项、证据、结论、未知和下一测，缺一项就容易把猜测写成机制。</p><div class="code-example"><div class="code-heading"><span>复盘记录对象 <span class="code-language">JavaScript data</span></span><button type="button" id="copy-example" hidden>复制代码</button></div><pre tabindex="0" aria-label="复盘记录对象"><code id="first-example">var reviewRecord = {
+  title: "一次扩张调用的复盘模板",
+  question: "增加一次果农生成调用，是否值得占用英雄行动窗口？",
+  hypothesis: "如果新增收入能覆盖阻塞和响应窗口损失，扩张才可能值得；否则应保持原方案。",
+  change: "只增加一次 hero.spawnCollector()，其他采集与攻击设置不变。",
+  controls: [
+    "采集元素仍为 fire",
+    "攻击法术仍为 fire-arrow",
+    "不新增防御、辅助或组合攻击",
+  ],
+  evidence: [
+    { kind: "document", statement: "简介中的生成时间是页面文档说明，不直接当作实测耗时。", source: { kind: "document", file: "docs/guides/battle-intro-reading.md", section: "果农与采集", pageVersion: "AI世青赛全国(2027)联盟", checkedAt: "2026-10-08" } },
+    { kind: "observed", statement: "有界 fixture 观察到回调先安装、生成返回后才进入后续英雄调用。", source: { kind: "bounded-fixture", file: "test/teaching-third-lesson.test.mjs", case: "spawn is attempted once after callback installation and before later hero calls", version: "teaching-fixture@2026-10-12", sequence: ["chooseItem-installed", "spawnCollector", "getTotalMana"], errors: "none" } },
+    { kind: "hypothesis", statement: "更多果农可能增加后续法力收入。" },
+    { kind: "unknown", statement: "原有果农在英雄生成阻塞期间是否继续采集，尚未由本记录证明。" },
+  ],
+  conclusion: "本记录只支持调用顺序和证据边界，不支持实战回本或胜率结论。",
+  unknown: [
+    "当前页面版本的真实生成耗时",
+    "新增果农的实际入账和死亡影响",
+    "真人对手下的扩张收益",
+  ],
+  nextTest: "在相同对手和攻击设置下，只改变是否生成一次果农，并保存逐帧证据。",
+};</code></pre><div class="code-footer"><span>这是记录结构，不是策略程序；无 hero、网络、账号或比赛调用。</span><span id="copy-status" role="status"></span></div></div><div class="download-row"><a class="secondary-link" href="../examples/teaching/mages-might/05-review-record.js" download="05-review-record.js">下载记录模板 <span aria-hidden="true">↓</span></a><span>可复制后改写自己的实验记录。</span></div></section>
+      <section class="lesson-section" id="evidence" aria-labelledby="evidence-title"><div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">LABEL BEFORE YOU CONCLUDE</p><h2 id="evidence-title">四类证据，四种说法</h2></div></div><p class="section-description">同一句话放进不同标签，含义可能完全不同。标签不是装饰，是结论的边界。</p><div class="evidence-grid"><article class="evidence-card"><span class="evidence-label document-label">文档说明</span><h3>“简介这样写。”</h3><p>保留来源和版本；不能直接推出当前运行一定如此。</p></article><article class="evidence-card"><span class="evidence-label measured-label">运行观测</span><h3>“这一帧看到了。”</h3><p>绑定 runId、源码身份、帧和错误检查；不能外推所有对手。</p></article><article class="evidence-card"><span class="evidence-label hypothesis-label">策略假设</span><h3>“可能因为……”</h3><p>提出下一次对照，而不是把可能性写成机制。</p></article><article class="evidence-card"><span class="evidence-label unknown-label">未知</span><h3>“当前不能确定。”</h3><p>保留缺口，写清需要什么观测才能缩小它。</p></article></div><ol class="resource-loop" aria-label="复盘流程"><li><span>1</span>提出问题</li><li><span>2</span>只改一项</li><li><span>3</span>保存证据</li><li><span>4</span>限定结论</li><li><span>5</span>设计下一测</li></ol></section>
+      <section class="lesson-section practice-section" id="practice" aria-labelledby="practice-title"><div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">CHECK THE REVIEW</p><h2 id="practice-title">检查复盘质量</h2></div></div><p class="section-description">判断这些说法应该落在哪一类标签。不上传、不保存，也不替你编造结论。</p><form id="lesson-quiz"><fieldset class="quiz-question"><legend><span>Q1</span>“简介列出第2个果农耗时1秒”应该先标成什么？</legend><label><input type="radio" name="review-document" value="document"><span>文档说明，还要保留版本和实测差异。</span></label><label><input type="radio" name="review-document" value="measured"><span>运行观测，因为文档数字就是帧证据。</span></label><p class="answer-feedback" id="feedback-review-document" aria-live="polite"></p></fieldset><fieldset class="quiz-question"><legend><span>Q2</span>“更多果农可能增加法力收入”属于什么？</legend><label><input type="radio" name="review-hypothesis" value="fact"><span>已经证明的通用事实。</span></label><label><input type="radio" name="review-hypothesis" value="hypothesis"><span>需要控制变量验证的策略假设。</span></label><p class="answer-feedback" id="feedback-review-hypothesis" aria-live="polite"></p></fieldset><fieldset class="quiz-question"><legend><span>Q3</span>“护盾与飞弹同帧消失”之后，最诚实的记录是什么？</legend><label><input type="radio" name="review-unknown" value="expiry"><span>护盾已经证明自然到期。</span></label><label><input type="radio" name="review-unknown" value="unknown"><span>记录为未知，继续区分命中、耐久和自然到期。</span></label><p class="answer-feedback" id="feedback-review-unknown" aria-live="polite"></p></fieldset><fieldset class="quiz-question"><legend><span>Q4</span>下一次对照最重要的设计是什么？</legend><label><input type="radio" name="review-next" value="many"><span>同时改采集、攻击、防御，让结果更明显。</span></label><label><input type="radio" name="review-next" value="one"><span>只改变一个主要因素，并写出成功与失败判据。</span></label><p class="answer-feedback" id="feedback-review-next" aria-live="polite"></p></fieldset><div class="quiz-actions" id="quiz-actions" hidden><button class="primary-button" type="submit">检查答案</button><button class="secondary-button" type="reset">重新作答</button><p id="quiz-status" role="status"></p></div></form><noscript><p class="small-note">JavaScript 未启用，自测不会自动评分；四类标签与流程仍可阅读。</p></noscript><details class="teacher-notes"><summary>教师提示与课程闭环</summary><p>先检查学生有没有把结果写成原因，再检查有没有删除 unknown。好的复盘允许结论很小，但必须能指导下一次实验。</p><p>前四课从规则、接口、扩张和预算出发；本课把它们收束成一条可重复的方法。之后先审阅闭环，不自动进入真人对战。</p></details></section>
+      <section class="lesson-section sources-section" id="sources" aria-labelledby="sources-title"><div class="section-heading"><span class="section-number">↗</span><div><p class="eyebrow">KEEP THE LOOP HONEST</p><h2 id="sources-title">来源与验证边界</h2></div></div><div class="source-list"><a href="../docs/guides/basic-probe-status.md"><span><strong>基础探测收口记录</strong><small>unknown、失败和复验缺口必须保留</small></span><span aria-hidden="true">↗</span></a><a href="../docs/guides/competition-probing.md"><span><strong>观测与错误约束</strong><small>world.frames、异常证据与不写 print</small></span><span aria-hidden="true">↗</span></a><span class="public-reference-note"><span><strong>历史修正与失败过程</strong><small>不要只抄最后数字，保留纠错链</small></span><span aria-hidden="true">↗</span><small>历史修正资料含策略与原始运行片段，未随公开教学站分发。</small></span><a href="../docs/teaching/mages-might-fifth-lesson.md"><span><strong>完整第五课草稿</strong><small>记录字段、证据标签和练习</small></span><span aria-hidden="true">↗</span></a></div><p class="small-note">本课验证记录结构，不新增机制结论。教学版与参赛版分工保持不变，未公开参赛源码。</p></section>
+      <footer class="lesson-footer"><a href="04-offense-defense-budget.html">← 返回第四课</a><span>课程闭环草稿完成 <span class="planned-badge">等待审阅</span></span></footer>
+    </main>
+  </div>
+</body>
+</html>

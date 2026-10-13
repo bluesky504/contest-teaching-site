@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "466cffb2dfe0edf25eb010e32fba9dfe431c886324c8c4e9e75123446963189b",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "assets/teaching.css",
+      "sha256": "9b8ad908a310e7575fc6fd00df7e7f905e1672e2befabf5373830ac169bf7b6a",
+      "kind": "teaching-asset",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "assets/teaching.js",
+      "sha256": "475bbea99136e9583e30a93f5e77bf1e68f3b8526cc07926b96d0419c460e6cb",
+      "kind": "teaching-asset",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "assets/timeline-viewer.css",
+      "sha256": "6dea5ff74963c01325e8e3d86322d57ec90f64e5aa5d8f4e009224a8b791e54a",
+      "kind": "teaching-asset",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "assets/timeline-viewer.js",
+      "sha256": "c311a6fa3f41170a87ae4e45df91c0a2f94141754456056ccf043263e2f537a6",
+      "kind": "teaching-asset",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "lessons/02-gather-and-attack.html",
+      "sha256": "379fa8ce4a88d8638409daedc7be8516d2e5019b9baf375acdc23a884ab0f678",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "lessons/03-expansion-and-blocking.html",
+      "sha256": "2c1c9601a059d7ad4edd45e5e0e9391e8a734dd15ee0d64c038befe26c27f42e",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "lessons/04-offense-defense-budget.html",
+      "sha256": "45a51c63f93f4202b53977cd997b8fc758292b300856c2dd0dd26f7a0d5f338e",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "lessons/05-review-and-knowledge.html",
+      "sha256": "47e96d2e1d772908d032012928a6c8f3a06161e1ceb3b0d0d1e6f6a6578fa2cc",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "tools/timeline-viewer.html",
+      "sha256": "044e24b217c19e6c389cf96f443931b7201142e4eb1454c76186cb587cf7b937",
+      "kind": "teaching-page",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "examples/teaching/mages-might/02-gather-and-attack.js",
+      "sha256": "7db224868e826e53bb10c89073a4251133ce56dfcaf8d1bde3d683073f7c4d41",
+      "kind": "teaching-example",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "examples/teaching/mages-might/03-expansion-and-blocking.js",
+      "sha256": "57f568c4fe65c0d03c1faee6af5d2a52b84f2f3c681a0e5fc5cf18efde17d65e",
+      "kind": "teaching-example",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "examples/teaching/mages-might/04-offense-defense-budget.js",
+      "sha256": "ebfb4e7f37fcf3c3fde8180b7cca8b79f0d7acb0886bfafa765e0e8eb47317ce",
+      "kind": "teaching-example",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "examples/teaching/mages-might/05-review-record.js",
+      "sha256": "31252caa82c323b9702c6a4ca6e85dcdc2facc0a0365b9825b67c706ecadbcef",
+      "kind": "teaching-example",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/course-review-checklist.md",
+      "sha256": "39888d25b8a8a5b7ee1a2d6d13d2e72b600ac03957a8dc0c80607d21a4726105",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/mages-might-first-lesson.md",
+      "sha256": "f92e37690901cb9bc7f956a06b879a467b4a5045f2ed9fb65bd6f10276605c42",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/mages-might-second-lesson.md",
+      "sha256": "b5d4264bb2a27e72fb3f23c5999ffcc3284f92b280df5caebfb8f709fdcee14f",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/mages-might-third-lesson.md",
+      "sha256": "2d7157e801506a1ddcf2021279b06eb18c573fc40262d32c9dd81aaeba0dc679",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/mages-might-fourth-lesson.md",
+      "sha256": "eb6ee622029735d9254885b08d306f1e8ca8fef6ce40995ad7aa1fc47535299a",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/teaching/mages-might-fifth-lesson.md",
+      "sha256": "e36e7c9201346a277c8a4621a98a30dfa35af97677d16f6c8a950a54eb9dc77d",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/guides/basic-probe-status.md",
+      "sha256": "8f946e34a36670ebac6ea38ffb63aedbbed81f258164b62825cbc4c67f82b34a",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/guides/battle-intro-reading.md",
+      "sha256": "52793b5891b259924010acc7353ecd4557bcaeb808ec319c315746338a84cac9",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/guides/competition-probing.md",
+      "sha256": "a9bd08c9b3bcef573a893c27fedd8cb8169c591a67f5cfbf5873486aef2ea85b",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "docs/guides/timeline-viewer.md",
+      "sha256": "389ade4b483a46aaa0e346d7d1fa025f3c21c9352f7e70a6001ba7c137d09a8a",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "data/maps/mages-might/2026-10-08/README.md",
+      "sha256": "e5aca9cb79363ffb99341610ebd67bf535081c343d98e704e379f968f0fb7ada",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "data/seasons/2026-aiyouth/mages-might/api.json",
+      "sha256": "516e635e6460bc767aef8e5777ad48b34ffc5c8c3ef95a67dff44aaa10269dd1",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "data/seasons/2026-aiyouth/mages-might/facts.json",
+      "sha256": "f2e6b0c680f1d0f77222c0c7c2c6971c10e758e3e692fe364e653337ac982421",
+      "kind": "reference",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "adapters/codecombat/observer.mjs",
+      "sha256": "5204b36d894eac3061a4b400bcf2c34d510454e1c3110f215e74e7a6441f5d79",
+      "kind": "observer-source",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    },
+    {
+      "path": "build/userscript.mjs",
+      "sha256": "cd580b7f7da53bf4974e98d6e33f6a8810cdbd3bf35171eba12cc714cfececc2",
+      "kind": "observer-source",
+      "source": "project-owned",
+      "approvedBy": "User approval 2026-10-13: changes/active/004-public-teaching-site/04-decisions.md#d-004-1 and #d-004-4"
+    }
+  ]
+}

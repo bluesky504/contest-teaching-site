@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="../../../../../site.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本地只读查看手动采集快照：文件不上传，不判终局或胜负。">
+  <title>手动快照查看 — 巫师之战教学实验室</title>
+  <link rel="stylesheet" href="../assets/teaching.css">
+  <link rel="stylesheet" href="../assets/timeline-viewer.css">
+  <script src="../assets/timeline-viewer.js" defer></script>
+</head>
+<body>
+<aside class="platform-publication" aria-label="平台目录与公开状态"><a href="../../../../../index.html">← 赛事教学平台 / 全部课程</a><span>公开教学预览 · 不代表官方实战或正式证据验收；原始日志不随站分发。原稿中的“未公开”是编写时状态。</span></aside>
+  <a class="skip-link" href="#viewer">跳到快照查看</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">巫</span><span>巫师之战<span class="brand-subtitle">教学实验室</span></span></a>
+      <div class="header-actions"><span class="draft-badge">本地只读原型</span><a href="../index.html">返回课程</a></div>
+    </div>
+  </header>
+  <main id="viewer" class="viewer-layout" tabindex="-1">
+    <section class="viewer-intro">
+      <p class="eyebrow">OBSERVE / READ / ASK</p>
+      <h1>把快照里的变化，<br>变成下一个问题。</h1>
+      <p class="intro-description">手动导入采集文件，选择一帧、一个实体，查看原始字段。这里不是比赛回放，也不是自动判定器。</p>
+    </section>
+    <div class="scope-notice"><span class="notice-label">先记住边界</span><p>只在本标签页内存中读取，不上传、不自动保存、不执行源码。文件格式符合要求，<strong>不代表来源真实、帧完整或结论通过复验</strong>。手动快照不能据末帧判定终局和胜负。</p></div>
+    <noscript><p class="viewer-message">读取文件需要 JavaScript；说明仍可阅读。当前没有加载任何采集数据。</p></noscript>
+    <section class="viewer-import" aria-labelledby="import-title">
+      <h2 id="import-title">01 / 选择你自己的快照</h2>
+      <p>支持只读采集器下载的 <code>schemaVersion=1</code>、<code>captureType=manual-snapshot</code>、<code>adjudicated=false</code> JSON。最多 8 MiB；不接受命令行结果报告或参赛源码。</p>
+      <div id="import-controls" class="viewer-controls" hidden>
+        <label class="viewer-file-label" for="snapshot-file">选择本地 JSON<input id="snapshot-file" type="file" accept=".json,application/json"></label>
+        <div class="viewer-actions"><button id="load-demo" type="button">先看虚构教学示例</button><button id="clear-snapshot" type="button">清空展示</button></div>
+      </div>
+      <p id="viewer-status" class="viewer-message" role="status" aria-live="polite">尚未载入文件。也可以先用虚构示例体验查看方式。</p>
+    </section>
+    <section id="viewer-panel" class="viewer-panel" aria-labelledby="data-title" hidden>
+      <h2 id="data-title">02 / 一次只读一个状态</h2>
+      <p id="source-warning" class="viewer-warning"></p>
+      <dl class="viewer-metadata"><div><dt>文件记录的采集时间（UTC）</dt><dd id="capture-time"></dd></div><div><dt>快照规模</dt><dd id="snapshot-size"></dd></div></dl>
+      <div class="viewer-selection">
+        <label for="entity-select">实体<select id="entity-select"></select></label>
+        <label for="frame-index">帧序号（从 0 开始）<input id="frame-index" type="number" min="0" step="1" value="0"></label>
+        <label class="viewer-slider" for="frame-slider">移动到另一帧<input id="frame-slider" type="range" min="0" step="1" value="0"></label>
+      </div>
+      <p id="frame-summary" class="viewer-frame-summary" aria-live="polite"></p>
+      <p id="frame-status" class="viewer-warning"></p>
+      <div class="table-container"><table class="viewer-table"><caption class="visually-hidden">所选帧与实体的原始字段；缺失或读取失败为 unknown</caption><thead><tr><th scope="col">字段</th><th scope="col">原值</th><th scope="col">读法</th></tr></thead><tbody id="property-values"></tbody></table></div>
+      <h3>该帧的读取诊断</h3><ul id="frame-diagnostics" class="viewer-diagnostics"></ul>
+    </section>
+    <section class="viewer-help" aria-labelledby="help-title">
+      <h2 id="help-title">03 / 从“看到了”到“能说明”</h2>
+      <ol><li><strong>保留 unknown：</strong>没读到字段不是数值 0，也不证明实体死亡或不存在。</li><li><strong>不要混用 mana：</strong><code>fire/water/earth</code> 是法力数量；<code>mana</code> 可能是元素字符串，原样读取。</li><li><strong>留意预热：</strong>按已有适配器约定，前 20 帧只展示、不用于推论；这不证明其他帧已经可信。</li><li><strong>结论不能超出证据：</strong>若想解释一段变化，先写假设、控制项和下一次只改一个因素的对照。</li></ol>
+      <p><a href="../lessons/05-review-and-knowledge.html">回到第五课：复盘与知识归纳</a> · <a href="../docs/guides/timeline-viewer.md">格式、限制与使用说明</a></p>
+      <p>采集器源码：<a href="../build/userscript.mjs">构建入口</a>；字段来自 <a href="../adapters/codecombat/observer.mjs">共享只读观测器</a>。当前没有跨域自动接收，也没有进行真实油猴安装或比赛联调。</p>
+    </section>
+  </main>
+</body>
+</html>

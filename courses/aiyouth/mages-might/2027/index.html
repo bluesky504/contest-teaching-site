@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="../../../../site.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="巫师之战教学实验室：从比赛规则、可用接口到可验证的策略。第一课本地教学草稿。">
+  <meta name="color-scheme" content="light">
+  <title>第一课 · 规则与接口 — 巫师之战教学实验室</title>
+  <link rel="stylesheet" href="assets/teaching.css">
+  <script src="assets/teaching.js" defer></script>
+</head>
+<body>
+<aside class="platform-publication" aria-label="平台目录与公开状态"><a href="../../../../index.html">← 赛事教学平台 / 全部课程</a><span>公开教学预览 · 不代表官方实战或正式证据验收；原始日志不随站分发。原稿中的“未公开”是编写时状态。</span></aside>
+  <a class="skip-link" href="#lesson">跳到课程内容</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#lesson" aria-label="巫师之战教学实验室首页">
+        <span class="brand-mark" aria-hidden="true">巫</span>
+        <span>巫师之战<span class="brand-subtitle">教学实验室</span></span>
+      </a>
+      <div class="header-actions"><span class="draft-badge">本地教学草稿</span><a href="#sources">查看来源 <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="学习导航">
+      <p class="eyebrow">MAGES’ MIGHT / LEARNING LAB</p>
+      <h2 class="sidebar-title">从理解到创造</h2>
+      <p class="sidebar-description">不从最强代码开始。<br>从一个能解释的决定开始。</p>
+      <nav class="lesson-nav" aria-label="本课目录">
+        <a href="#lesson" aria-current="page"><span class="nav-number">01</span>规则与可用接口</a>
+        <a href="#rules">读懂规则表格</a>
+        <a href="#api">把问题翻译成接口</a>
+        <a href="#practice">检验你的理解</a>
+      </nav>
+      <div class="available-lessons course-overview"><p class="eyebrow">课程路线 · 已制作</p><a href="lessons/02-gather-and-attack.html"><span class="nav-number">02</span>采集与基本攻击 <span aria-hidden="true">↗</span></a><a href="lessons/03-expansion-and-blocking.html"><span class="nav-number">03</span>扩张与阻塞取舍 <span aria-hidden="true">↗</span></a><a href="lessons/04-offense-defense-budget.html"><span class="nav-number">04</span>攻防预算 <span aria-hidden="true">↗</span></a><a href="lessons/05-review-and-knowledge.html"><span class="nav-number">05</span>复盘与知识归纳 <span aria-hidden="true">↗</span></a></div>
+      <div class="available-lessons"><p class="eyebrow">本地工具 · 只读原型</p><a href="tools/timeline-viewer.html">手动快照查看 <span aria-hidden="true">↗</span></a></div>
+      <div class="sidebar-note"><span class="status-dot" aria-hidden="true"></span>离线阅读与自测<br><span>无账号操作 · 不运行比赛</span></div>
+    </aside>
+    <main id="lesson" tabindex="-1">
+      <section class="lesson-intro" aria-labelledby="lesson-title">
+        <div class="intro-copy">
+          <p class="eyebrow">第一课 / 规则 → 接口 → 证据</p>
+          <h1 id="lesson-title">先看懂战场，<br>再写第一行代码。</h1>
+          <p class="intro-description">程序的第一步不是“放什么法术”，而是知道自己看到了什么、能调用什么，以及哪些结论还不能下。</p>
+          <div class="lesson-tags"><span>JavaScript</span><span>变量与函数基础</span><span>从简到优</span></div>
+          <a class="primary-link" href="#rules">开始阅读 <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="learning-card">
+          <span class="card-kicker">这一课，你将学会</span>
+          <ol><li>画出资源与行动的循环</li><li>找到三类状态读取入口</li><li>区分说明、证据与假设</li></ol>
+          <div class="mana-tokens" aria-label="三种元素：火、水、土"><span class="fire">火 FIRE</span><span class="water">水 WATER</span><span class="earth">土 EARTH</span></div>
+          <p>教学的目标不是复制答案，<br>而是学会提出更好的问题。</p>
+        </div>
+      </section>
+      <div class="scope-notice"><span class="notice-label">先记住边界</span><p>本页是教学草稿，不是参赛程序。基础补测来自 <strong>2027 联盟</strong>，接口表保留 <strong>2026 历史样本</strong>来源；两者不能自动视为跨版本等价。</p></div>
+      <section class="lesson-section" id="rules" aria-labelledby="rules-title">
+        <div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">READ THE RULES</p><h2 id="rules-title">先理解循环，再理解数字</h2></div></div>
+        <p class="section-description">在比赛页打开“提示 → 简介”。先用一句话解释每一步，再看表格里每一列的含义。</p>
+        <ol class="resource-loop" aria-label="资源与行动循环"><li><span>1</span>果农采集</li><li><span>2</span>三池法力</li><li><span>3</span>施法消耗</li><li><span>4</span>战场变化</li><li><span>5</span>再次观察</li></ol>
+        <div class="table-container">
+          <table class="rules-table">
+            <caption class="visually-hidden">规则表格的含义与不能直接推导的结论</caption>
+            <thead><tr><th scope="col">表格中的内容</th><th scope="col">正确理解</th><th scope="col">不能直接推出</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">魔法 mana</th><td>fire / water / earth 等元素类型</td><td>它不是法力点数</td></tr>
+              <tr><th scope="row">费用</th><td>消耗本方对应元素的法力</td><td>不是对方实际掉血量</td></tr>
+              <tr><th scope="row">法力 / 威力</th><td>攻击或特殊效果的说明值</td><td>有盾时仍必定掉同样的血</td></tr>
+              <tr><th scope="row">持续时间</th><td>界面文档中的时间说明</td><td>必然等于飞行、冷却或盾的寿命</td></tr>
+              <tr><th scope="row">元素相克</th><td>火克土、水克火、土克水</td><td>不区分盾与攻击方向就能下结论</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="thought-prompt"><span>想一想</span><p>“这个法术现在能放”，为什么不等于“现在就应该放”？把你的解释留到后续资源争用实验里验证。</p></div>
+      </section>
+      <section class="lesson-section" id="api" aria-labelledby="api-title">
+        <div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">ASK BEFORE YOU CALL</p><h2 id="api-title">把问题翻译成接口</h2></div></div>
+        <p class="section-description">下面是历史 JS 接口证据中的入口。方法能读取列表，不代表列表里每个字段都已经验证。</p>
+        <div class="api-toolbar" id="api-filters" hidden><div class="filter-buttons" role="group" aria-label="按用途筛选接口"><button type="button" data-api-filter="all" aria-controls="api-table" aria-pressed="true">全部</button><button type="button" data-api-filter="observe" aria-controls="api-table" aria-pressed="false">观察</button><button type="button" data-api-filter="gather" aria-controls="api-table" aria-pressed="false">采集</button><button type="button" data-api-filter="cast" aria-controls="api-table" aria-pressed="false">施法</button></div><span id="api-count" role="status">显示 6 个接口</span></div>
+        <div class="table-container">
+          <table id="api-table" class="api-table">
+            <caption class="visually-hidden">问题、JS 接口与验证边界</caption>
+            <thead><tr><th scope="col">我想知道 / 做什么</th><th scope="col">JS 入口</th><th scope="col">使用边界</th></tr></thead>
+            <tbody>
+              <tr data-api-category="observe"><th scope="row">我有哪些果农？</th><td><code>hero.findMyCollectors()</code></td><td>对象字段逐项核对，不读取隐藏字段。</td></tr>
+              <tr data-api-category="observe"><th scope="row">我有多少火法力？</th><td><code>hero.getTotalMana("fire")</code></td><td>查询单池要传元素；无参历史样本是三池之和。</td></tr>
+              <tr data-api-category="observe"><th scope="row">对面有哪些来袭飞弹？</th><td><code>hero.findEnemyMissiles()</code></td><td>没观察到某类飞弹，不代表它不存在。</td></tr>
+              <tr data-api-category="gather"><th scope="row">果农下一次采哪种水果？</th><td><code>hero.chooseItem = function (collector) { return "fire"; }</code></td><td>选择回调不是收入保证；完整调度后续再讲。</td></tr>
+              <tr data-api-category="cast"><th scope="row">能否尝试一个法术？</th><td><code>hero.canCast(spellName)</code></td><td>一次 false 不证明唯一原因；冷却语义另看证据。</td></tr>
+              <tr data-api-category="cast"><th scope="row">发出施法调用？</th><td><code>hero.cast(spellName)</code></td><td>调用、返回值与实际效果是三件事。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-example"><div class="code-heading"><span>三个读取入口 <span class="code-language">JavaScript</span></span><button type="button" id="copy-example" hidden>复制代码</button></div><pre tabindex="0" aria-label="三个读取入口的代码"><code id="first-example">var ownCollectors = hero.findMyCollectors();
+var fireMana = hero.getTotalMana("fire");
+var incomingMissiles = hero.findEnemyMissiles();</code></pre><div class="code-footer"><span>仅说明接口，不是完整策略；没有打印、对局执行或实测效果声明。</span><span id="copy-status" role="status"></span></div></div>
+        <p class="small-note">不要用曾在简介中出现的 <code>hero.collectors</code> 替代有效入口：历史逐字段探测发现它的属性读取会被拦截。</p>
+      </section>
+      <section class="lesson-section" id="evidence" aria-labelledby="evidence-title">
+        <div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">KEEP YOUR CLAIMS HONEST</p><h2 id="evidence-title">三种说法，三种标签</h2></div></div>
+        <div class="evidence-grid">
+          <article class="evidence-card"><span class="evidence-label document-label">文档说明</span><h3>“简介这样写。”</h3><p>保留页面与版本。说明值是线索，不自动变成实测值。</p></article>
+          <article class="evidence-card"><span class="evidence-label measured-label">观测证据</span><h3>“这一局，这一帧。”</h3><p>需要 runId、源码身份、帧与错误检查，不能外推所有对手。</p></article>
+          <article class="evidence-card"><span class="evidence-label hypothesis-label">策略假设</span><h3>“更多果农可能更好。”</h3><p>考虑生成阻塞与收入，设计对照，而不是直接宣布最优。</p></article>
+        </div>
+        <p class="small-note"><code>unknown</code>、估计值与样本不足不是需要藏起来的瑕疵，而是你下一次实验的起点。基础收口也不等于所有机制都已测定。</p>
+      </section>
+      <section class="lesson-section practice-section" id="practice" aria-labelledby="practice-title">
+        <div class="section-heading"><span class="section-number">04</span><div><p class="eyebrow">CHECK YOUR UNDERSTANDING</p><h2 id="practice-title">先作判断，再看解释</h2></div></div>
+        <p class="section-description">三个小问题，全部在本地判断。不上传、不保存，也不代表程序实战成绩。</p>
+        <form id="lesson-quiz">
+          <fieldset class="quiz-question"><legend><span>Q1</span>查询水元素法力，应使用哪一个入口？</legend>
+            <label><input type="radio" name="water-mana" value="single"><span><code>hero.getTotalMana("water")</code></span></label>
+            <label><input type="radio" name="water-mana" value="total"><span><code>hero.getTotalMana()</code></span></label>
+            <p class="answer-feedback" id="feedback-water-mana" aria-live="polite"></p>
+          </fieldset>
+          <fieldset class="quiz-question"><legend><span>Q2</span>护盾消失时恰好有飞弹落地，能宣布它“到期”吗？</legend>
+            <label><input type="radio" name="shield-lifetime" value="expiry"><span>能，消失就代表持续时间结束。</span></label>
+            <label><input type="radio" name="shield-lifetime" value="inspect"><span>不能，先检查命中、耐久与消失帧。</span></label>
+            <p class="answer-feedback" id="feedback-shield-lifetime" aria-live="polite"></p>
+          </fieldset>
+          <fieldset class="quiz-question"><legend><span>Q3</span>“多造果农可能更好”，现在应该标成什么？</legend>
+            <label><input type="radio" name="strategy-claim" value="fact"><span>已经证明的通用最优策略。</span></label>
+            <label><input type="radio" name="strategy-claim" value="hypothesis"><span>需要控制变量验证的策略假设。</span></label>
+            <p class="answer-feedback" id="feedback-strategy-claim" aria-live="polite"></p>
+          </fieldset>
+          <div class="quiz-actions" id="quiz-actions" hidden><button class="primary-button" type="submit">检查答案</button><button class="secondary-button" type="reset">重新作答</button><p id="quiz-status" role="status"></p></div>
+        </form>
+        <noscript><p class="small-note">JavaScript 未启用，自测不会自动评分。你仍然可以阅读课程与下方教师提示。</p></noscript>
+        <details class="teacher-notes"><summary>教师提示与延伸问题</summary><p>单池查询要传对应元素；盾消失要区分被打碎与自然到期；更多果农的收益要和阻塞成本一起比较。</p><p>延伸：果农从列表消失，为什么不能只凭列表变化判断死亡原因？考虑观测缺失、身份、生命和伤害帧。</p><p>到官方页面验证时，先读共享约束，重进后点击右下角“开始”，只运行不评分；从 <code>world.frames</code> 观测，不把 <code>print</code> 放进策略。</p></details>
+      </section>
+      <section class="lesson-section sources-section" id="sources" aria-labelledby="sources-title">
+        <div class="section-heading"><span class="section-number">↗</span><div><p class="eyebrow">FOLLOW THE EVIDENCE</p><h2 id="sources-title">从哪里来，还缺什么</h2></div></div>
+        <div class="source-list">
+          <a href="docs/guides/battle-intro-reading.md"><span><strong>比赛页简介的系统核对</strong><small>2027 页面规则说明 · 不等于逐帧实测</small></span><span aria-hidden="true">↗</span></a>
+          <a href="data/seasons/2026-aiyouth/mages-might/api.json"><span><strong>JS API 历史证据</strong><small>2026 赛季目录 · 访问状态与字段边界</small></span><span aria-hidden="true">↗</span></a>
+          <a href="data/maps/mages-might/2026-10-08/README.md"><span><strong>基础补测快照</strong><small>实际 2027 联盟 · 保留历史继承与 unknown</small></span><span aria-hidden="true">↗</span></a>
+          <a href="docs/guides/basic-probe-status.md"><span><strong>收口与待复验状态</strong><small>不把收口当成所有机制已测定</small></span><span aria-hidden="true">↗</span></a>
+          <a href="docs/teaching/mages-might-first-lesson.md"><span><strong>完整首课草稿</strong><small>教师备课与后续内容来源</small></span><span aria-hidden="true">↗</span></a>
+          <a href="docs/guides/competition-probing.md"><span><strong>浏览器与比赛验证约束</strong><small>页面独占、错误检测、只运行不评分</small></span><span aria-hidden="true">↗</span></a>
+          <a href="docs/teaching/course-review-checklist.md"><span><strong>五课课程审阅清单</strong><small>教师首次通读与反馈入口</small></span><span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="small-note">部分原始报告不随仓库分发。引用说明不等于本页重新实测；教学原型尚未独立复验或公开发布。</p>
+      </section>
+      <footer class="lesson-footer"><span>学会解释，才开始改进。</span><a href="lessons/02-gather-and-attack.html">下一课：采集与基本攻击 →</a></footer>
+    </main>
+  </div>
+</body>
+</html>

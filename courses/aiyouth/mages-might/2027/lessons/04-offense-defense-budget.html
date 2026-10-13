@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="stylesheet" href="../../../../../site.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="巫师之战第四课：用最小预算模型理解来袭观察、防御预留与攻击等待。离线教学演示，不运行比赛。">
+  <meta name="color-scheme" content="light">
+  <title>第四课 · 攻防预算 — 巫师之战教学实验室</title>
+  <link rel="stylesheet" href="../assets/teaching.css">
+  <script src="../assets/teaching.js" defer></script>
+</head>
+<body data-lesson="offense-defense-budget">
+<aside class="platform-publication" aria-label="平台目录与公开状态"><a href="../../../../../index.html">← 赛事教学平台 / 全部课程</a><span>公开教学预览 · 不代表官方实战或正式证据验收；原始日志不随站分发。原稿中的“未公开”是编写时状态。</span></aside>
+  <a class="skip-link" href="#lesson">跳到课程内容</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="../index.html" aria-label="返回第一课"><span class="brand-mark" aria-hidden="true">巫</span><span>巫师之战<span class="brand-subtitle">教学实验室</span></span></a><div class="header-actions"><span class="draft-badge">本地教学草稿</span><a href="#sources">查看来源 <span aria-hidden="true">↗</span></a></div></div></header>
+  <div class="page-layout">
+    <aside class="sidebar" aria-label="学习导航"><p class="eyebrow">MAGES’ MIGHT / LEARNING LAB</p><h2 class="sidebar-title">预算不是保守，<br>是把未知说清楚</h2><p class="sidebar-description">先观察来袭，<br>再决定哪一笔法力值得花。</p><nav class="lesson-nav" aria-label="课程与本课目录"><a href="../index.html"><span class="nav-number">01</span>规则与可用接口</a><a href="02-gather-and-attack.html"><span class="nav-number">02</span>采集与基本攻击</a><a href="03-expansion-and-blocking.html"><span class="nav-number">03</span>扩张与阻塞取舍</a><a href="#lesson" aria-current="page"><span class="nav-number">04</span>攻防预算</a><a href="#model">调整预算输入</a><a href="#practice">检验你的理解</a></nav><div class="available-lessons"><a href="05-review-and-knowledge.html"><span class="nav-number">05</span>复盘与知识归纳 <span aria-hidden="true">↗</span></a></div><div class="sidebar-note"><span class="status-dot" aria-hidden="true"></span>离线决策演示<br><span>不执行策略 · 不运行比赛</span></div></aside>
+    <main id="lesson" tabindex="-1">
+      <section class="lesson-intro" aria-labelledby="lesson-title"><div class="intro-copy"><p class="eyebrow">第四课 / 观察 → 预留 → 等待</p><h1 id="lesson-title">法力够了，<br>也不一定要攻击。</h1><p class="intro-description">真正的攻防预算，是在行动前回答：我看到了什么？哪一笔支出必须保留？什么情况只能等待？</p><div class="lesson-tags"><span>JavaScript / ES5 风格</span><span>分支与预算</span><span>未知状态安全等待</span></div><a class="primary-link" href="#program">看懂顺序 <span aria-hidden="true">↓</span></a></div><div class="learning-card"><span class="card-kicker">本课只做三件事</span><ol><li>读取来袭元素样本</li><li>一次性预留水盾预算</li><li>无威胁时才尝试火球</li></ol><div class="mana-tokens"><span class="fire">火 FIRE</span><span class="water">水盾 WATER</span><span class="earth">未知 → 等待</span></div><p>等待不是失败，<br>是不拿猜测冒险。</p></div></section>
+      <div class="scope-notice"><span class="notice-label">边界先于策略</span><p>本课只使用已记录的飞弹 <code>mana</code> 样本和元素相克规则。未知来袭不猜测；护盾自然寿命、冷却和所有飞弹字段都<strong>不在本课结论内</strong>。完整示例不能当普通 Node 或网页脚本运行。</p></div>
+      <section class="lesson-section" id="program" aria-labelledby="program-title"><div class="section-heading"><span class="section-number">01</span><div><p class="eyebrow">DEFENSE FIRST, ATTACK SECOND</p><h2 id="program-title">防御预算只花一次</h2></div></div><p class="section-description">和第三课相比，本课增加来袭观察与一次防御预算；只有确认 findEnemyMissiles() 返回数组且为空时，火球才进入攻击分支；非数组或缺失观测保持 unknown。水池达到3是外部 fixture/模型输入，不是本示例的资源供给闭环。</p><div class="code-example"><div class="code-heading"><span>攻防预算分支示例 <span class="code-language">JavaScript</span></span><button type="button" id="copy-example" hidden>复制代码</button></div><pre tabindex="0" aria-label="攻防预算分支示例"><code id="first-example">var attackElement = "fire";
+var attackSpell = "fire-ball";
+var attackCost = 15;
+var shieldElement = "water";
+var shieldSpell = "water-shield";
+var shieldCost = 3;
+var shieldUsed = false;
+
+hero.chooseItem = function (collector) {
+  return attackElement;
+};
+
+while (true) {
+  var attackMana = hero.getTotalMana(attackElement);
+  var shieldMana = hero.getTotalMana(shieldElement);
+  var incoming = hero.findEnemyMissiles();
+  var hasArrayObservation = Array.isArray(incoming);
+  var hasIncoming = hasArrayObservation &amp;&amp; incoming.length &gt; 0;
+  var incomingMana = hasIncoming &amp;&amp; incoming[0] ? incoming[0].mana : null;
+
+  if (hasIncoming &amp;&amp; incomingMana === "fire" &amp;&amp; !shieldUsed &amp;&amp; shieldMana &gt;= shieldCost &amp;&amp; hero.canCast(shieldSpell)) {
+    hero.cast(shieldSpell);
+    shieldUsed = true;
+  } else if (hasArrayObservation &amp;&amp; !hasIncoming &amp;&amp; attackMana &gt;= attackCost &amp;&amp; hero.canCast(attackSpell)) {
+    hero.cast(attackSpell);
+  }
+}</code></pre><div class="code-footer"><span>只展示预算顺序；水池法力是外部 fixture 输入，不读取隐藏护盾字段或依赖 cast 返回值。</span><span id="copy-status" role="status"></span></div></div><div class="download-row"><a class="secondary-link" href="../examples/teaching/mages-might/04-offense-defense-budget.js" download="04-offense-defense-budget.js">下载预算分支示例 <span aria-hidden="true">↓</span></a><span>仅供教师后续平台验证，不在网页执行。</span></div><div class="table-container"><table class="rules-table"><caption class="visually-hidden">攻防预算代码含义</caption><thead><tr><th scope="col">分支</th><th scope="col">做什么</th><th scope="col">不保证什么</th></tr></thead><tbody><tr><th scope="row">已知 fire 来袭</th><td>水池够且预算未用时尝试水盾</td><td>所有飞弹与盾字段都已测定</td></tr><tr><th scope="row">无可见来袭</th><td>火池达到15且可用时尝试火球</td><td>空列表等于绝对安全</td></tr><tr><th scope="row">未知来袭</th><td>两个分支都不执行，等待</td><td>等待本身能保证存活或获胜</td></tr></tbody></table></div></section>
+      <section class="lesson-section" id="model" aria-labelledby="model-title"><div class="section-heading"><span class="section-number">02</span><div><p class="eyebrow">TRY THE BRANCHES</p><h2 id="model-title">调整输入，观察决策</h2></div></div><p class="section-description">这是离线决策模型，不推进时间、不施法、不读取真实页面。把“预算已用”和“未知来袭”切换，看为什么同样的攻击法力会得到不同动作。</p><div class="budget-demo" id="budget-demo" data-state="shield"><div class="budget-controls"><label for="budget-attack">火池法力 <output id="budget-attack-value">15</output><input id="budget-attack" type="range" min="0" max="30" value="15"></label><label for="budget-shield">水池法力 <output id="budget-shield-value">3</output><input id="budget-shield" type="range" min="0" max="9" value="3"></label><label for="budget-incoming">来袭样本<select id="budget-incoming"><option value="none">无可见来袭</option><option value="fire" selected>已知 fire</option><option value="unknown">元素未知</option></select></label><label class="check-label"><input id="budget-used" type="checkbox">防御预算已用</label></div><div class="budget-results"><div><span>建议动作</span><strong id="budget-action">尝试水盾</strong></div><div><span>原因</span><strong id="budget-reason">已知火来袭，先用水盾预算。</strong></div></div><div class="demo-controls" id="budget-controls" hidden><button type="button" id="budget-reset" class="secondary-button">恢复默认输入</button></div></div><div class="thought-prompt"><span>记住</span><p>“等待”让模型保留了未知状态，而不是偷偷替它选择一个元素。</p></div></section>
+      <section class="lesson-section" id="practice" aria-labelledby="practice-title"><div class="section-heading"><span class="section-number">03</span><div><p class="eyebrow">CHECK THE BUDGET</p><h2 id="practice-title">检验你的理解</h2></div></div><p class="section-description">先判断为什么等待，再讨论如何设计真实对照。答案只在当前页面判断，不上传、不保存。</p><form id="lesson-quiz"><fieldset class="quiz-question"><legend><span>Q1</span>火池已经有15，但来袭元素未知时，为什么不直接放火球？</legend><label><input type="radio" name="unknown-attack" value="attack"><span>因为法力越多越应该立刻攻击。</span></label><label><input type="radio" name="unknown-attack" value="wait"><span>因为未知状态不能映射安全的防御或攻击决策。</span></label><p class="answer-feedback" id="feedback-unknown-attack" aria-live="polite"></p></fieldset><fieldset class="quiz-question"><legend><span>Q2</span>本课的 <code>shieldUsed</code> 更接近什么？</legend><label><input type="radio" name="shield-budget" value="fact"><span>平台证明护盾只能施放一次的事实。</span></label><label><input type="radio" name="shield-budget" value="budget"><span>教学示例中的一次防御预算参数。</span></label><p class="answer-feedback" id="feedback-shield-budget" aria-live="polite"></p></fieldset><fieldset class="quiz-question"><legend><span>Q3</span>空的 <code>findEnemyMissiles()</code> 能证明对手绝不会攻击吗？</legend><label><input type="radio" name="empty-missiles" value="safe"><span>能，空列表就是绝对安全。</span></label><label><input type="radio" name="empty-missiles" value="not-proof"><span>不能，它只是当前观测时刻没有可见飞弹。</span></label><p class="answer-feedback" id="feedback-empty-missiles" aria-live="polite"></p></fieldset><div class="quiz-actions" id="quiz-actions" hidden><button class="primary-button" type="submit">检查答案</button><button class="secondary-button" type="reset">重新作答</button><p id="quiz-status" role="status"></p></div></form><noscript><p class="small-note">JavaScript 未启用，自测不会自动评分；上面的分支表仍可阅读。</p></noscript><details class="teacher-notes"><summary>教师提示与下一步</summary><p>先让学生解释四种输入，再讨论为什么不能把相克规则扩展到未验证飞弹字段。护盾寿命与冷却另有证据边界。</p><p>下一课是复盘与知识归纳：把一次实验写成假设、变量、观测、结论与未知，而不是继续堆 if。</p></details></section>
+      <section class="lesson-section sources-section" id="sources" aria-labelledby="sources-title"><div class="section-heading"><span class="section-number">↗</span><div><p class="eyebrow">FOLLOW THE EVIDENCE</p><h2 id="sources-title">来源与验证边界</h2></div></div><div class="source-list"><a href="../docs/guides/battle-intro-reading.md"><span><strong>简介阅读记录</strong><small>相克规则、费用与威力列义</small></span><span aria-hidden="true">↗</span></a><a href="../data/maps/mages-might/2026-10-08/README.md"><span><strong>护盾配对快照</strong><small>current / historical 样本与 unknown 边界</small></span><span aria-hidden="true">↗</span></a><a href="../data/seasons/2026-aiyouth/mages-might/api.json"><span><strong>JS API 历史证据</strong><small>飞弹列表、mana 字段、getTotalMana、canCast、cast</small></span><span aria-hidden="true">↗</span></a><a href="../docs/teaching/mages-might-fourth-lesson.md"><span><strong>完整第四课草稿</strong><small>预算规则、分支练习与未知边界</small></span><span aria-hidden="true">↗</span></a></div><p class="small-note">本页模型与有界 fixture 不证明护盾真实效果、飞弹全量覆盖、冷却、伤害或胜率。课页未连接官方比赛，未公开发布。</p></section>
+      <footer class="lesson-footer"><a href="03-expansion-and-blocking.html">← 返回第三课</a><a href="05-review-and-knowledge.html">下一课：复盘与知识归纳 →</a></footer>
+    </main>
+  </div>
+</body>
+</html>
